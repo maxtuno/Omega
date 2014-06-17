@@ -1,9 +1,4 @@
-
-Copyright 2014 O. A. Riveros. All rights reserved.
-
-The use of any part of this software, it always allowed and where nonprofit,
-whether to use the software for profit contact me to oscar.riveros@gmail.com
-and let's talk about a commercial license.
+#### Ω #### 
 
 Omega is an ultra pure lisp dialect, inspired by the work of Gregory Chaitin,
 Omega's power is unlimited, but in practice its use is reduced to scientific Research.
@@ -218,3 +213,10 @@ http://ufrj.academia.edu/GregoryChaitin
 173  Ω> End of OMEGA Run
 174  Ω>
 175  Ω> Elapsed time is 195 milliseconds
+
+
+Copyright 2014 O. A. Riveros. All rights reserved.
+
+The use of any part of this software, it always allowed and where nonprofit,
+whether to use the software for profit contact me to oscar.riveros@gmail.com
+and let's talk about a commercial license.
