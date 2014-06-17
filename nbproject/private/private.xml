@@ -3,9 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/Users/maxtuno/NetBeansProjects/Releases/Omega/readme.txt</file>
             <file>file:/Users/maxtuno/NetBeansProjects/Releases/Omega/src/omega/Omega.java</file>
             <file>file:/Users/maxtuno/NetBeansProjects/Releases/Omega/src/omega/OmegaInterpreter.java</file>
-            <file>file:/Users/maxtuno/NetBeansProjects/Releases/Omega/examples/all.om</file>
+            <file>file:/Users/maxtuno/NetBeansProjects/Releases/Omega/src/omega/OmegaParser.java</file>
             <file>file:/Users/maxtuno/NetBeansProjects/Releases/Omega/src/omega/Atom.java</file>
             <file>file:/Users/maxtuno/NetBeansProjects/Releases/Omega/src/omega/SExpression.java</file>
         </group>
