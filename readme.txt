@@ -1,6 +1,4 @@
-#### Ω #### 
-
-Omega is an ultra pure lisp dialect, inspired by the work of Gregory Chaitin,
+Ω (Omega) is an ultra pure lisp dialect, inspired by the work of Gregory Chaitin,
 Omega's power is unlimited, but in practice its use is reduced to scientific Research.
 It can be used for example in reading the work of Chaitin, or classroom.
 whatever you use it for, try to play hard.
