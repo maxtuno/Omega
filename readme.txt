@@ -10,6 +10,10 @@ Omega's power is unlimited, but in practice its use is reduced to scientific Res
 It can be used for example in reading the work of Chaitin, or classroom.
 whatever you use it for, try to play hard.
 
+Use: 
+1) - console: java -jar Omega.jar
+2) - code: java -jar Omega.jar "The Multiverse in Omega.om"
+
 O. A. Riveros
 http://independent.academia.edu/oarr
 
