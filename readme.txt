@@ -3,7 +3,7 @@ Copyright 2014 O. A. Riveros. All rights reserved.
 
 The use of any part of this software, it always allowed and where nonprofit,
 whether to use the software for profit contact me to oscar.riveros@gmail.com
-and let'expr talk about a commercial license.
+and let's talk about a commercial license.
 
 Omega is an ultra pure lisp dialect, inspired by the work of Gregory Chaitin,
 Omega's power is unlimited, but in practice its use is reduced to scientific Research.
