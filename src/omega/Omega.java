@@ -27,8 +27,9 @@ public class Omega {
     }
 
     public static void main(String args[]) throws Exception {
-        System.out.println("#####################################################");
-        System.out.println("#                      Omega                        #");
+        long start = System.currentTimeMillis();
+
+        System.out.println("#####################################################");    
         System.out.println("#                                                   #");
         System.out.println("#                  .d88888888b.                     #");
         System.out.println("#                 d88P\"    \"Y88b                    #");
@@ -39,16 +40,27 @@ public class Omega {
         System.out.println("#                                                   #");
         System.out.println("# Copyright 2014 O. A. Riveros. All rights reserved.#");
         System.out.println("#             oscar.riveros@gmail.com               #");
+        System.out.println("#                                                   #");
         System.out.println("#####################################################");
 
         BufferedReader buffer;
         String expr = null;
+        int line = 0;
+
         if (args.length == 1) {
             buffer = new BufferedReader(new FileReader(args[0]));
-
             while ((expr = buffer.readLine()) != null) {
-                System.out.print("omega> ");
-                System.out.println("omega> ".concat(Omega.eval(expr)));
+                if (!expr.startsWith("(")) {                    
+                    if (expr.startsWith(";")) {
+                        System.out.println(String.format("%-4s \u03A9> %s", line, expr.replace(";", "")));
+                    } else {
+                        System.out.println(String.format("%-4s \u03A9> %s", line, expr));
+                    }
+                } else {
+                    System.out.println(String.format("%-4s \u03A9> %s", line, Omega.eval(expr)));
+                }
+
+                line++;
             }
 
             buffer.close();
@@ -56,10 +68,14 @@ public class Omega {
             buffer = new BufferedReader(new InputStreamReader(System.in));
 
             while (!"(stop)".equals(expr)) {
-                System.out.print("omega> ");
+                System.out.print(String.format("%-4s \u03A9> ", line++));
                 expr = buffer.readLine();
-                System.out.println("omega> ".concat(Omega.eval(expr)));
+                System.out.println(String.format("%-4s \u03A9> %s", line++, Omega.eval(expr)));                
             }
+
+            buffer.close();
         }
+
+        System.out.println(String.format("%-4s \u03A9> Elapsed time is %s milliseconds", line++, System.currentTimeMillis() - start));
     }
 }

@@ -57,6 +57,8 @@ public class Atom {
 
     public static final SExpression EVAL = makeAtom("eval");
 
+    public static final SExpression DEFINE = makeAtom("define");
+
     public static SExpression makeAtom(String expr) {
         SExpression atom = (SExpression) atoms.get(expr);
         if (atom == null) {
@@ -81,6 +83,10 @@ public class Atom {
             }
         }
         return true;
+    }
+
+    static boolean isComment(SExpression expr) {
+        return expr.toString().startsWith(";");
     }
 
     public static void refreshBindings() {

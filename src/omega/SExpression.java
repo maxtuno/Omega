@@ -23,8 +23,8 @@ public final class SExpression implements Comparable {
     SExpression cdr;
     boolean atom;
     boolean number;
-    String printValue;
-    BigInteger nValue;
+    String toString;
+    BigInteger toNumber;
     Stack stack;
     StringBuffer buffer;
 
@@ -33,8 +33,8 @@ public final class SExpression implements Comparable {
         cdr = this;
         atom = true;
         number = true;
-        printValue = num.toString();
-        nValue = num;
+        toString = num.toString();
+        toNumber = num;
         stack = new Stack();
         bind(this);
     }
@@ -44,8 +44,8 @@ public final class SExpression implements Comparable {
         cdr = this;
         atom = true;
         number = false;
-        printValue = expr;
-        nValue = BigInteger.valueOf(0);
+        toString = expr;
+        toNumber = BigInteger.valueOf(0);
         stack = new Stack();
         bind(this);
     }
@@ -55,8 +55,8 @@ public final class SExpression implements Comparable {
         cdr = tail;
         atom = false;
         number = false;
-        printValue = "";
-        nValue = BigInteger.valueOf(0);
+        toString = "";
+        toNumber = BigInteger.valueOf(0);
         stack = null;
     }
 
@@ -134,7 +134,7 @@ public final class SExpression implements Comparable {
             SExpression expr = (SExpression) obj;
 
             if (number && expr.number) {
-                return nValue.equals(expr.nValue);
+                return toNumber.equals(expr.toNumber);
             }
 
             if (number || expr.number) {
@@ -167,7 +167,7 @@ public final class SExpression implements Comparable {
         hash = 41 * hash + (this.number
                 ? 1
                 : 0);
-        hash = 41 * hash + Objects.hashCode(this.nValue);
+        hash = 41 * hash + Objects.hashCode(this.toNumber);
 
         return hash;
     }
@@ -181,8 +181,8 @@ public final class SExpression implements Comparable {
     }
 
     void toString(SExpression expr) {
-        if (expr.isAtom() && !expr.printValue.equals("")) {
-            buffer.append(expr.printValue);
+        if (expr.isAtom() && !expr.toString.equals("")) {
+            buffer.append(expr.toString);
 
             return;
         }
@@ -205,6 +205,6 @@ public final class SExpression implements Comparable {
     public int compareTo(Object obj) {
         SExpression expr = (SExpression) obj;
 
-        return nValue.compareTo(expr.nValue);
+        return toNumber.compareTo(expr.toNumber);
     }
 }

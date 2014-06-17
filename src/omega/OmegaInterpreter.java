@@ -9,6 +9,8 @@
 package omega;
 
 import java.math.BigInteger;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  *
@@ -16,11 +18,26 @@ import java.math.BigInteger;
  */
 public class OmegaInterpreter {
 
+    static Map<String, SExpression> define = new HashMap();
+
     public OmegaInterpreter() {
         Atom.NILnil.bind(Atom.NIL);
     }
 
     public SExpression eval(SExpression expr) {
+
+        if (define.containsKey(expr.toString())) {
+            return define.get(expr.toString());
+        }
+        
+        if (Atom.isComment(expr)) {
+            return Atom.NIL;
+        }
+
+        if (expr.isAtom()) {
+            return expr.getValue();
+        }
+
         if (expr.isAtom()) {
             return expr.getValue();
         }
@@ -70,19 +87,19 @@ public class OmegaInterpreter {
         }
 
         if (function == Atom.PLUS) {
-            return new SExpression(x.nValue.add(y.nValue));
+            return new SExpression(x.toNumber.add(y.toNumber));
         }
 
         if (function == Atom.MINUS) {
-            return new SExpression(BigInteger.valueOf(0).max(x.nValue.subtract(y.nValue)));
+            return new SExpression(BigInteger.valueOf(0).max(x.toNumber.subtract(y.toNumber)));
         }
 
         if (function == Atom.TIMES) {
-            return new SExpression(x.nValue.multiply(y.nValue));
+            return new SExpression(x.toNumber.multiply(y.toNumber));
         }
 
         if (function == Atom.TO_THE_POWER) {
-            return new SExpression(x.nValue.pow(y.nValue.intValue()));
+            return new SExpression(x.toNumber.pow(y.toNumber.intValue()));
         }
 
         if (function == Atom.EQUALS) {
@@ -123,6 +140,21 @@ public class OmegaInterpreter {
             Atom.restoreBindings();
 
             return val;
+        }
+
+        if (function == Atom.DEFINE) {
+            Atom.refreshBindings();
+            SExpression val;
+
+            if (!define.containsKey(x.toString())) {
+                define.put(x.toString(), y);
+            } else {
+                define.replace(x.toString(), y);
+            }
+
+            Atom.restoreBindings();
+
+            return Atom.TRUE;
         }
 
         SExpression vars = function.cadr();
