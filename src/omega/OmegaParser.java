@@ -3,7 +3,7 @@
  *
  * The use of any part of this software, it always allowed and where nonprofit,
  * whether to use the software for profit contact me to oscar.riveros@gmail.com
- * and let'expr talk about a commercial license.
+ * and let's talk about a commercial license.
  *
  */
 package omega;
