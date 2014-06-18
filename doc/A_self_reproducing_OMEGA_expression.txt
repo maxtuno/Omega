@@ -1,0 +1,66 @@
+#####################################################
+#                                                   #
+#                  .d88888888b.                     #
+#                 d88P"    "Y88b                    #
+#                 888        888                    #
+#                 Y88b      d88P                    #
+#                  "88bo  od88"                     #
+#                 d88888  88888b                    #
+#                                                   #
+# Copyright 2014 O. A. Riveros. All rights reserved.#
+#             oscar.riveros@gmail.com               #
+#                                                   #
+#####################################################
+0    Ω> [[[[[
+1    Ω> 
+2    Ω> A OMEGA expression that evaluates to itself!
+3    Ω> 
+4    Ω> Let f(x): x -> (('x)('x))
+5    Ω> (define (f x) (' (lambda (x) (('x)('x)))))
+6    Ω> true
+7    Ω> 
+8    Ω> Then 
+9    Ω> 'f
+10   Ω> is a fixed point.
+11   Ω> 
+12   Ω> ]]]]]
+13   Ω> 
+14   Ω> [Here is the fixed point done by hand:]
+15   Ω> 
+16   Ω> (
+17   Ω> 'lambda(x) cons cons "' cons x nil
+18   Ω>            cons cons "' cons x nil
+19   Ω>                 nil
+20   Ω> 
+21   Ω> 'lambda(x) cons cons "' cons x nil
+22   Ω>            cons cons "' cons x nil
+23   Ω>                 nil
+24   Ω> )
+25   Ω> 
+26   Ω> [Now let's construct the fixed point.]
+27   Ω> 
+28   Ω> define (f x) let y [be] cons "' cons x nil [y is ('x)        ]
+29   Ω>              [return] cons y cons y nil    [return (('x)('x))]
+30   Ω> 
+31   Ω> [Here we try f:]
+32   Ω> 
+33   Ω> 'x
+34   Ω> 
+35   Ω> [Here we use f to calculate the fixed point:]
+36   Ω> 
+37   Ω> 'x
+38   Ω> 
+39   Ω> [Here we find the value of the fixed point:]
+40   Ω> 
+41   Ω> 'x
+42   Ω> 
+43   Ω> [Here we check that it's a fixed point:]
+44   Ω> 
+45   Ω> true
+46   Ω> 
+47   Ω> [Just for emphasis:]
+48   Ω> 
+49   Ω> true
+50   Ω> Elapsed time is 73 milliseconds
+
+

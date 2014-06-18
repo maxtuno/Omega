@@ -1,0 +1,50 @@
+[[[[[
+
+A OMEGA expression that evaluates to itself!
+
+Let f(x): x -> (('x)('x))
+;(define (f x) (' (lambda (x) (('x)('x)))))
+(define (f x) (' (lambda (x) (('x)('x)))))
+
+Then 
+(('f)('f)) 
+is a fixed point.
+
+]]]]]
+
+[Here is the fixed point done by hand:]
+
+;(
+'lambda(x) cons cons "' cons x nil
+           cons cons "' cons x nil
+                nil
+
+'lambda(x) cons cons "' cons x nil
+           cons cons "' cons x nil
+                nil
+;)
+
+[Now let's construct the fixed point.]
+
+define (f x) let y [be] cons "' cons x nil [y is ('x)        ]
+             [return] cons y cons y nil    [return (('x)('x))]
+
+[Here we try f:]
+
+(f x)
+
+[Here we use f to calculate the fixed point:]
+
+(f f)
+
+[Here we find the value of the fixed point:]
+
+(eval (f f))
+
+[Here we check that it's a fixed point:]
+
+(= (f f) (eval (f f)))
+
+[Just for emphasis:]
+
+(= (f f) (eval (eval (eval (eval (eval (eval (f f))))))))
