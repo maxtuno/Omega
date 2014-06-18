@@ -42,46 +42,44 @@ Gödel's incompleteness theorem Proof with Omega:
 2    Ω> A OMEGA expression that asserts that it itself is unprovable!
 3    Ω> 
 4    Ω> Let g(x): x -> (is-unprovable (value-of (('x)('x))))
-5    Ω> (define (g x) ((' (lambda (g) (g x))) (' (lambda (x) ((' (lambda (L) (L is-unprovable (L value-of (L (L ' x) (L ' x)))))) (' (lambda (x y) (cons x (cons y nil)))))))))
+5    Ω> (define (g) (' (lambda (x) ((' (lambda (L) (L is-unprovable (L value-of (L (L ' x) (L ' x)))))) (' (lambda (x y) (cons x (cons y nil))))))))
 6    Ω> true
 7    Ω> 
-8    Ω> Then 
-9    Ω> (is-unprovable (value-of (('g)('g))))
-10   Ω> is-unprovable
-11   Ω> asserts that it itself is not a theorem!
+8    Ω> Then (is-unprovable (value-of (('g)('g))))
+9    Ω> asserts that it itself is not a theorem!
+10   Ω> 
+11   Ω> ]]]]]
 12   Ω> 
-13   Ω> ]]]]]
-14   Ω> 
-15   Ω> define (g x) 
-16   Ω>    let (L x y) cons x cons y nil [Makes x and y into list.]
-17   Ω>    (L is-unprovable (L value-of (L (L "' x) (L "' x))))
+13   Ω> define (g x) 
+14   Ω>    let (L x y) cons x cons y nil [Makes x and y into list.]
+15   Ω>    (L is-unprovable (L value-of (L (L "' x) (L "' x))))
+16   Ω> 
+17   Ω> [Here we try g:]
 18   Ω> 
-19   Ω> [Here we try g:]
-20   Ω> 
-21   Ω> (is-unprovable (value-of (g x)))
-22   Ω> is-unprovable
+19   Ω> (g x)
+20   Ω> (is-unprovable (value-of ((' x) (' x))))
+21   Ω> 
+22   Ω> [Here we calculate the OMEGA expression that asserts its own unprovability:]
 23   Ω> 
-24   Ω> [Here we calculate the OMEGA expression that asserts its own unprovability:]
-25   Ω> 
-26   Ω> (is-unprovable (value-of (g g)))
-27   Ω> is-unprovable
+24   Ω> (g g)
+25   Ω> (is-unprovable (value-of ((' (lambda (x) ((' (lambda (L) (L is-unprovable (L value-of (L (L ' x) (L ' x)))))) (' (lambda (x y) (cons x (cons y nil))))))) (' (lambda (x) ((' (lambda (L) (L is-unprovable (L value-of (L (L ' x) (L ' x)))))) (' (lambda (x y) (cons x (cons y nil))))))))))
+26   Ω> 
+27   Ω> [Here we extract the part that it uses to name itself:]
 28   Ω> 
-29   Ω> [Here we extract the part that it uses to name itself:]
-30   Ω> 
-31   Ω> (cadr (cadr (g g)))
-32   Ω> is-unprovable
+29   Ω> (car (cdr (car (cdr (g g)))))
+30   Ω> ((' (lambda (x) ((' (lambda (L) (L is-unprovable (L value-of (L (L ' x) (L ' x)))))) (' (lambda (x y) (cons x (cons y nil))))))) (' (lambda (x) ((' (lambda (L) (L is-unprovable (L value-of (L (L ' x) (L ' x)))))) (' (lambda (x y) (cons x (cons y nil))))))))
+31   Ω> 
+32   Ω> [Here we evaluate the name to get back the entire expression:] 
 33   Ω> 
-34   Ω> [Here we evaluate the name to get back the entire expression:] 
-35   Ω> 
-36   Ω> (eval (cadr (cadr (g g))))
-37   Ω> is-unprovable
+34   Ω> (eval (car (cdr (car (cdr  (g g))))))
+35   Ω> (is-unprovable (value-of ((' (lambda (x) ((' (lambda (L) (L is-unprovable (L value-of (L (L ' x) (L ' x)))))) (' (lambda (x y) (cons x (cons y nil))))))) (' (lambda (x) ((' (lambda (L) (L is-unprovable (L value-of (L (L ' x) (L ' x)))))) (' (lambda (x y) (cons x (cons y nil))))))))))
+36   Ω> 
+37   Ω> [Here we check that it worked:]
 38   Ω> 
-39   Ω> [Here we check that it worked:]
-40   Ω> 
-41   Ω> (= (g g) (eval (car (cdr (car (cdr (is-unprovable (value-of (g g)))))))))
-42   Ω> true
-43   Ω> 
-44   Ω> Elapsed time is 207 milliseconds
+39   Ω> (= (g g) (eval (car (cdr (car (cdr  (g g)))))))
+40   Ω> true
+41   Ω> 
+42   Ω> Elapsed time is 112 milliseconds
 
 Elementary Set Theory in OMEGA (finite sets):
 
