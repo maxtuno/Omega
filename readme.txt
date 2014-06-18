@@ -22,6 +22,66 @@ http://independent.academia.edu/oarr
 Gregory Chaitin
 http://ufrj.academia.edu/GregoryChaitin
 
+Gödel's incompleteness theorem Proof with Omega:
+
+#####################################################
+#                                                   #
+#                  .d88888888b.                     #
+#                 d88P"    "Y88b                    #
+#                 888        888                    #
+#                 Y88b      d88P                    #
+#                  "88bo  od88"                     #
+#                 d88888  88888b                    #
+#                                                   #
+# Copyright 2014 O. A. Riveros. All rights reserved.#
+#             oscar.riveros@gmail.com               #
+#                                                   #
+#####################################################
+0    Ω> [[[[[
+1    Ω> 
+2    Ω> A OMEGA expression that asserts that it itself is unprovable!
+3    Ω> 
+4    Ω> Let g(x): x -> (is-unprovable (value-of (('x)('x))))
+5    Ω> (define (g x) ((' (lambda (g) (g x))) (' (lambda (x) ((' (lambda (L) (L is-unprovable (L value-of (L (L ' x) (L ' x)))))) (' (lambda (x y) (cons x (cons y nil)))))))))
+6    Ω> true
+7    Ω> 
+8    Ω> Then 
+9    Ω> (is-unprovable (value-of (('g)('g))))
+10   Ω> is-unprovable
+11   Ω> asserts that it itself is not a theorem!
+12   Ω> 
+13   Ω> ]]]]]
+14   Ω> 
+15   Ω> define (g x) 
+16   Ω>    let (L x y) cons x cons y nil [Makes x and y into list.]
+17   Ω>    (L is-unprovable (L value-of (L (L "' x) (L "' x))))
+18   Ω> 
+19   Ω> [Here we try g:]
+20   Ω> 
+21   Ω> (g x)
+22   Ω> ()
+23   Ω> 
+24   Ω> [Here we calculate the OMEGA expression that asserts its own unprovability:]
+25   Ω> 
+26   Ω> (g g)
+27   Ω> ()
+28   Ω> 
+29   Ω> [Here we extract the part that it uses to name itself:]
+30   Ω> 
+31   Ω> (cadr (cadr (g g)))
+32   Ω> ()
+33   Ω> 
+34   Ω> [Here we evaluate the name to get back the entire expression:] 
+35   Ω> 
+36   Ω> (eval (cadr (cadr (g g))))
+37   Ω> ()
+38   Ω> 
+39   Ω> [Here we check that it worked:]
+40   Ω> 
+41   Ω> true
+42   Ω> Elapsed time is 70 milliseconds
+
+
 #####################################################
 #                                                   #
 #                  .d88888888b.                     #
