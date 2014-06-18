@@ -39,6 +39,7 @@ define (g x)
 
 [Here we check that it worked:]
 
+;(= (g g) (eval (car (cdr (car (cdr (g g)))))))
 (= (g g) (eval (car (cdr (car (cdr (g g)))))))
 
 
