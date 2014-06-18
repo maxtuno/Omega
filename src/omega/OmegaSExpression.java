@@ -25,7 +25,7 @@ public final class OmegaSExpression implements Comparable {
     boolean number;
     String toString;
     BigInteger toNumber;
-    Stack stack;
+    Stack<OmegaSExpression> stack;
     StringBuffer buffer;
 
     public OmegaSExpression(BigInteger num) {
