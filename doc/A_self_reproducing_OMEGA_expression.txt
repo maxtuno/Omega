@@ -20,47 +20,51 @@
 6    Ω> true
 7    Ω> 
 8    Ω> Then 
-9    Ω> 'f
-10   Ω> is a fixed point.
-11   Ω> 
-12   Ω> ]]]]]
-13   Ω> 
-14   Ω> [Here is the fixed point done by hand:]
-15   Ω> 
-16   Ω> (
-17   Ω> 'lambda(x) cons cons "' cons x nil
-18   Ω>            cons cons "' cons x nil
-19   Ω>                 nil
-20   Ω> 
-21   Ω> 'lambda(x) cons cons "' cons x nil
-22   Ω>            cons cons "' cons x nil
-23   Ω>                 nil
-24   Ω> )
-25   Ω> 
-26   Ω> [Now let's construct the fixed point.]
-27   Ω> 
-28   Ω> define (f x) let y [be] cons "' cons x nil [y is ('x)        ]
-29   Ω>              [return] cons y cons y nil    [return (('x)('x))]
-30   Ω> 
-31   Ω> [Here we try f:]
-32   Ω> 
-33   Ω> 'x
-34   Ω> 
-35   Ω> [Here we use f to calculate the fixed point:]
+9    Ω> (('f)('f))
+10   Ω> 'f
+11   Ω> is a fixed point.
+12   Ω> 
+13   Ω> ]]]]]
+14   Ω> 
+15   Ω> [Here is the fixed point done by hand:]
+16   Ω> 
+17   Ω> (
+18   Ω> 'lambda(x) cons cons "' cons x nil
+19   Ω>            cons cons "' cons x nil
+20   Ω>                 nil
+21   Ω> 
+22   Ω> 'lambda(x) cons cons "' cons x nil
+23   Ω>            cons cons "' cons x nil
+24   Ω>                 nil
+25   Ω> )
+26   Ω> 
+27   Ω> [Now let's construct the fixed point.]
+28   Ω> 
+29   Ω> define (f x) let y [be] cons "' cons x nil [y is ('x)        ]
+30   Ω>              [return] cons y cons y nil    [return (('x)('x))]
+31   Ω> 
+32   Ω> [Here we try f:]
+33   Ω> 
+34   Ω> (f x)
+35   Ω> 'x
 36   Ω> 
-37   Ω> 'x
+37   Ω> [Here we use f to calculate the fixed point:]
 38   Ω> 
-39   Ω> [Here we find the value of the fixed point:]
-40   Ω> 
-41   Ω> 'x
-42   Ω> 
-43   Ω> [Here we check that it's a fixed point:]
-44   Ω> 
-45   Ω> true
+39   Ω> (f f)
+40   Ω> 'x
+41   Ω> 
+42   Ω> [Here we find the value of the fixed point:]
+43   Ω> 
+44   Ω> (eval (f f))
+45   Ω> 'x
 46   Ω> 
-47   Ω> [Just for emphasis:]
+47   Ω> [Here we check that it's a fixed point:]
 48   Ω> 
-49   Ω> true
-50   Ω> Elapsed time is 73 milliseconds
-
-
+49   Ω> (= (f f) (eval (f f)))
+50   Ω> true
+51   Ω> 
+52   Ω> [Just for emphasis:]
+53   Ω> 
+54   Ω> (= (f f) (eval (eval (eval (eval (eval (eval (f f))))))))
+55   Ω> true
+56   Ω> Elapsed time is 86 milliseconds
