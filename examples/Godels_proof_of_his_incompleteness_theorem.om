@@ -19,27 +19,26 @@ define (g x)
 
 [Here we try g:]
 
-;(g x)
-(g x)
+;(is-unprovable (value-of (g x)))
+(is-unprovable (value-of (g x)))
 
 [Here we calculate the OMEGA expression that asserts its own unprovability:]
 
-;(g g)
-(g g)
+;(is-unprovable (value-of (g g)))
+(is-unprovable (value-of (g g)))
 
 [Here we extract the part that it uses to name itself:]
 
 ;(cadr (cadr (g g)))
-(car (cdr (g g)))
+(car (cdr (is-unprovable (value-of (g g)))))
 
 [Here we evaluate the name to get back the entire expression:] 
 
 ;(eval (cadr (cadr (g g))))
-(eval (car (cdr (car (cdr (g g))))))
+(eval (car (cdr (car (cdr (is-unprovable (value-of (g g))))))))
 
 [Here we check that it worked:]
 
-;(= (g g) (eval (car (cdr (car (cdr (g g)))))))
-(= (g g) (eval (car (cdr (car (cdr (g g)))))))
-
+;(= (g g) (eval (car (cdr (car (cdr (is-unprovable (value-of (g g)))))))))
+(= (is-unprovable (value-of (g g))) (eval (car (cdr (car (cdr (is-unprovable (value-of (g g)))))))))
 

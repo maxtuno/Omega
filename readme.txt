@@ -83,19 +83,7 @@ Gödel's incompleteness theorem Proof with Omega:
 43   Ω> Elapsed time is 70 milliseconds
 
 
-#####################################################
-#                                                   #
-#                  .d88888888b.                     #
-#                 d88P"    "Y88b                    #
-#                 888        888                    #
-#                 Y88b      d88P                    #
-#                  "88bo  od88"                     #
-#                 d88888  88888b                    #
-#                                                   #
-# Copyright 2014 O. A. Riveros. All rights reserved.#
-#             oscar.riveros@gmail.com               #
-#                                                   #
-#####################################################
+
 0    Ω> OMEGA Interpreter Run
 1    Ω>
 2    Ω> [[[[[

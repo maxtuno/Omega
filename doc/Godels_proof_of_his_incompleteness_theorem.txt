@@ -32,28 +32,27 @@
 18   Ω> 
 19   Ω> [Here we try g:]
 20   Ω> 
-21   Ω> (g x)
-22   Ω> ()
+21   Ω> (is-unprovable (value-of (g x)))
+22   Ω> is-unprovable
 23   Ω> 
 24   Ω> [Here we calculate the OMEGA expression that asserts its own unprovability:]
 25   Ω> 
-26   Ω> (g g)
-27   Ω> ()
+26   Ω> (is-unprovable (value-of (g g)))
+27   Ω> is-unprovable
 28   Ω> 
 29   Ω> [Here we extract the part that it uses to name itself:]
 30   Ω> 
 31   Ω> (cadr (cadr (g g)))
-32   Ω> ()
+32   Ω> is-unprovable
 33   Ω> 
 34   Ω> [Here we evaluate the name to get back the entire expression:] 
 35   Ω> 
 36   Ω> (eval (cadr (cadr (g g))))
-37   Ω> ()
+37   Ω> is-unprovable
 38   Ω> 
 39   Ω> [Here we check that it worked:]
 40   Ω> 
-41   Ω> (= (g g) (eval (car (cdr (car (cdr (g g)))))))
+41   Ω> (= (g g) (eval (car (cdr (car (cdr (is-unprovable (value-of (g g)))))))))
 42   Ω> true
-43   Ω> Elapsed time is 70 milliseconds
-
-
+43   Ω> 
+44   Ω> Elapsed time is 207 milliseconds
