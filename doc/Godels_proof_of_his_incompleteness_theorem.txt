@@ -52,6 +52,8 @@
 38   Ω> 
 39   Ω> [Here we check that it worked:]
 40   Ω> 
-41   Ω> true
-42   Ω> Elapsed time is 70 milliseconds
+41   Ω> (= (g g) (eval (car (cdr (car (cdr (g g)))))))
+42   Ω> true
+43   Ω> Elapsed time is 70 milliseconds
+
 
