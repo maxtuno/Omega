@@ -160,11 +160,11 @@ public class OmegaRuntime {
         OmegaSExpression vars = function.cadr();
         OmegaSExpression body = function.caddr();
 
-        bind(vars, args);
+        push(vars, args);
 
         OmegaSExpression val = eval(body);
 
-        unbind(vars);
+        pop(vars);
 
         return val;
     }
@@ -180,19 +180,19 @@ public class OmegaRuntime {
         return h.cons(t);
     }
 
-    void bind(OmegaSExpression vars, OmegaSExpression args) {
+    void push(OmegaSExpression vars, OmegaSExpression args) {
         if (vars.isAtom()) {
             return;
         }
 
-        bind(vars.cdr(), args.cdr());
+        push(vars.cdr(), args.cdr());
 
         if (vars.car().isAtom() && !vars.car().isNumber()) {
             vars.car().push(args.car());
         }
     }
 
-    void unbind(OmegaSExpression vars) {
+    void pop(OmegaSExpression vars) {
         if (vars.isAtom()) {
             return;
         }
@@ -201,6 +201,6 @@ public class OmegaRuntime {
             vars.car().pop();
         }
 
-        unbind(vars.cdr());
+        pop(vars.cdr());
     }
 }
