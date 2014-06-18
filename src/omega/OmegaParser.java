@@ -18,31 +18,31 @@ public class OmegaParser {
 
     StringTokenizer tokenizer;
 
-    public SExpression parse(String expr) {
+    public OmegaSExpression parse(String expr) {
         tokenizer = new StringTokenizer(expr.trim(), " ()", true);
 
         return get();
     }
 
-    SExpression get() {
+    OmegaSExpression get() {
         String next = nextToken();
-        SExpression e = Atom.makeAtom(next);
+        OmegaSExpression e = OmegaAtom.makeAtom(next);
 
-        if (e == Atom.LEFT_PARENTHESIS) {
+        if (e == OmegaAtom.LEFT_PARENTHESIS) {
             return getList();
         }
 
         return e;
     }
 
-    SExpression getList() {
-        SExpression v = get();
+    OmegaSExpression getList() {
+        OmegaSExpression v = get();
 
-        if (v == Atom.RIGHT_PARENTHESIS) {
-            return Atom.NIL;
+        if (v == OmegaAtom.RIGHT_PARENTHESIS) {
+            return OmegaAtom.NIL;
         }
 
-        SExpression w = getList();
+        OmegaSExpression w = getList();
 
         return v.cons(w);
     }

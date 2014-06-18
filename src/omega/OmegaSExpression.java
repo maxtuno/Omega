@@ -17,10 +17,10 @@ import java.util.Stack;
  *
  * @author O. A. Riveros
  */
-public final class SExpression implements Comparable {
+public final class OmegaSExpression implements Comparable {
 
-    SExpression car;
-    SExpression cdr;
+    OmegaSExpression car;
+    OmegaSExpression cdr;
     boolean atom;
     boolean number;
     String toString;
@@ -28,7 +28,7 @@ public final class SExpression implements Comparable {
     Stack stack;
     StringBuffer buffer;
 
-    public SExpression(BigInteger num) {
+    public OmegaSExpression(BigInteger num) {
         car = this;
         cdr = this;
         atom = true;
@@ -39,7 +39,7 @@ public final class SExpression implements Comparable {
         bind(this);
     }
 
-    public SExpression(String expr) {
+    public OmegaSExpression(String expr) {
         car = this;
         cdr = this;
         atom = true;
@@ -50,7 +50,7 @@ public final class SExpression implements Comparable {
         bind(this);
     }
 
-    public SExpression(SExpression head, SExpression tail) {
+    public OmegaSExpression(OmegaSExpression head, OmegaSExpression tail) {
         car = head;
         cdr = tail;
         atom = false;
@@ -60,48 +60,48 @@ public final class SExpression implements Comparable {
         stack = null;
     }
 
-    public SExpression cons(SExpression tail) {
-        if (tail.isAtom() && (tail != Atom.NIL)) {
+    public OmegaSExpression cons(OmegaSExpression tail) {
+        if (tail.isAtom() && (tail != OmegaAtom.NIL)) {
             return this;
         }
 
-        return new SExpression(this, tail);
+        return new OmegaSExpression(this, tail);
     }
 
-    public SExpression car() {
+    public OmegaSExpression car() {
         return car;
     }
 
-    public SExpression cdr() {
+    public OmegaSExpression cdr() {
         return cdr;
     }
 
-    public SExpression cadr() {
+    public OmegaSExpression cadr() {
         return cdr.car;
     }
 
-    public SExpression caddr() {
+    public OmegaSExpression caddr() {
         return cdr.cdr.car;
     }
 
-    public SExpression cadddr() {
+    public OmegaSExpression cadddr() {
         return cdr.cdr.cdr.car;
     }
 
-    public SExpression length() {
+    public OmegaSExpression length() {
         long l = 0;
-        SExpression expr = this;
+        OmegaSExpression expr = this;
 
         while (!expr.isAtom()) {
             l++;
             expr = expr.cdr();
         }
 
-        return new SExpression(BigInteger.valueOf(l));
+        return new OmegaSExpression(BigInteger.valueOf(l));
     }
 
-    public SExpression size() {
-        return new SExpression(BigInteger.valueOf(toString().length()));
+    public OmegaSExpression size() {
+        return new OmegaSExpression(BigInteger.valueOf(toString().length()));
     }
 
     public boolean isAtom() {
@@ -116,12 +116,12 @@ public final class SExpression implements Comparable {
         return !stack.isEmpty();
     }
 
-    public void bind(SExpression expr) {
+    public void bind(OmegaSExpression expr) {
         stack.push(expr);
     }
 
-    public SExpression getValue() {
-        return (SExpression) stack.peek();
+    public OmegaSExpression getValue() {
+        return (OmegaSExpression) stack.peek();
     }
 
     public void unbind() {
@@ -130,8 +130,8 @@ public final class SExpression implements Comparable {
 
     @Override
     public boolean equals(Object obj) {
-        if (obj instanceof SExpression) {
-            SExpression expr = (SExpression) obj;
+        if (obj instanceof OmegaSExpression) {
+            OmegaSExpression expr = (OmegaSExpression) obj;
 
             if (number && expr.number) {
                 return toNumber.equals(expr.toNumber);
@@ -180,7 +180,7 @@ public final class SExpression implements Comparable {
         return buffer.toString();
     }
 
-    void toString(SExpression expr) {
+    void toString(OmegaSExpression expr) {
         if (expr.isAtom() && !expr.toString.equals("")) {
             buffer.append(expr.toString);
 
@@ -203,7 +203,7 @@ public final class SExpression implements Comparable {
 
     @Override
     public int compareTo(Object obj) {
-        SExpression expr = (SExpression) obj;
+        OmegaSExpression expr = (OmegaSExpression) obj;
 
         return toNumber.compareTo(expr.toNumber);
     }

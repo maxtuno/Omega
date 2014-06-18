@@ -19,7 +19,7 @@ import java.io.InputStreamReader;
 public class Omega {
 
     static OmegaParser parser = new OmegaParser();
-    static OmegaInterpreter interpreter = new OmegaInterpreter();    
+    static OmegaRuntime interpreter = new OmegaRuntime();  
 
     public static String eval(String expr) {
         return interpreter.eval(parser.parse(expr)).toString();
