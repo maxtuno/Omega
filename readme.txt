@@ -10,8 +10,8 @@ Use:
 To define functions:
 0    Ω> (define (add) (' (lambda (a b) (+ a b))))
 1    Ω> true
-2    Ω> (add 10 20)
-3    Ω> 30
+2    Ω> (add 31 97)
+3    Ω> 128
 4    Ω> (stop)
 5    Ω> stop
 6    Ω> Elapsed time is 77358 milliseconds
