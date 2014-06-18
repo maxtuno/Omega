@@ -91,18 +91,18 @@ public class OmegaAtom {
 
     public static void refreshBindings() {
         atoms.values().stream().forEach((atom) -> {
-            atom.bind(atom);
+            atom.push(atom);
         });
-        OmegaAtom.NILnil.unbind();
-        OmegaAtom.NILnil.bind(OmegaAtom.NIL);
+        OmegaAtom.NILnil.pop();
+        OmegaAtom.NILnil.push(OmegaAtom.NIL);
     }
 
     public static void restoreBindings() {
         atoms.values().stream().map((OmegaSExpression atom) -> {
-            atom.unbind();
+            atom.pop();
             return atom;
         }).filter((atom) -> (!atom.isBound())).forEach((atom) -> {
-            atom.bind(atom);
+            atom.push(atom);
         });
     }
 

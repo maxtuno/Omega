@@ -21,7 +21,7 @@ public class OmegaRuntime {
     static Map<String, OmegaSExpression> define = new HashMap();
 
     public OmegaRuntime() {
-        OmegaAtom.NILnil.bind(OmegaAtom.NIL);
+        OmegaAtom.NILnil.push(OmegaAtom.NIL);
     }
 
     public OmegaSExpression eval(OmegaSExpression expr) {
@@ -188,7 +188,7 @@ public class OmegaRuntime {
         bind(vars.cdr(), args.cdr());
 
         if (vars.car().isAtom() && !vars.car().isNumber()) {
-            vars.car().bind(args.car());
+            vars.car().push(args.car());
         }
     }
 
@@ -198,7 +198,7 @@ public class OmegaRuntime {
         }
 
         if (vars.car().isAtom() && !vars.car().isNumber()) {
-            vars.car().unbind();
+            vars.car().pop();
         }
 
         unbind(vars.cdr());

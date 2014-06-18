@@ -36,7 +36,7 @@ public final class OmegaSExpression implements Comparable {
         toString = num.toString();
         toNumber = num;
         stack = new Stack();
-        bind(this);
+        push(this);
     }
 
     public OmegaSExpression(String expr) {
@@ -47,7 +47,7 @@ public final class OmegaSExpression implements Comparable {
         toString = expr;
         toNumber = BigInteger.valueOf(0);
         stack = new Stack();
-        bind(this);
+        push(this);
     }
 
     public OmegaSExpression(OmegaSExpression head, OmegaSExpression tail) {
@@ -116,7 +116,7 @@ public final class OmegaSExpression implements Comparable {
         return !stack.isEmpty();
     }
 
-    public void bind(OmegaSExpression expr) {
+    public void push(OmegaSExpression expr) {
         stack.push(expr);
     }
 
@@ -124,7 +124,7 @@ public final class OmegaSExpression implements Comparable {
         return (OmegaSExpression) stack.peek();
     }
 
-    public void unbind() {
+    public void pop() {
         stack.pop();
     }
 
